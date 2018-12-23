@@ -7,8 +7,8 @@ import (
 	"github.com/pkg/errors"
 	"go.uber.org/zap"
 
-	"gitlab.com/mindtrex/mindgo/apierror"
-	"gitlab.com/mindtrex/mindgo/response"
+	"gitlab.com/mindtrex/mindpkg/apierror"
+	"gitlab.com/mindtrex/mindpkg/response"
 )
 
 type stackTracer interface {
@@ -26,7 +26,7 @@ func ErrorHandler(logger *zap.Logger) func(error, echo.Context) {
 
 		ae, ok := err.(*apierror.APIError)
 		if !ok {
-			err = apierror.NewError(http.StatusInternalServerError, http.StatusInternalServerError, http.StatusText(http.StatusInternalServerError), errors.Wrap(err, "errorhandler: internal error"))
+			err = apierror.NewErrorWithInternal(http.StatusInternalServerError, http.StatusText(http.StatusInternalServerError), errors.Wrap(err, "errorhandler: internal error"))
 			ae, _ = err.(*apierror.APIError)
 		}
 

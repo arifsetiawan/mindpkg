@@ -1,1 +1,1 @@
-package mindgo
+package mindpkg

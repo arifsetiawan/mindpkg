@@ -1,5 +1,7 @@
 package apierror
 
+import "errors"
+
 // APIError ...
 // e, ok := err.(*apierror.APIError)
 type APIError struct {
@@ -14,11 +16,21 @@ func (e *APIError) Error() string {
 }
 
 // NewError ...
-func NewError(status int, code int, message string, err error) *APIError {
+func NewError(status int, message string) *APIError {
 	return &APIError{
 		HTTPStatus: status,
-		Code:       code,
+		Code:       status,
 		Message:    message,
-		Err:        err,
+		Err:        errors.New(message),
+	}
+}
+
+// NewErrorWithInternal ...
+func NewErrorWithInternal(status int, message string, internal error) *APIError {
+	return &APIError{
+		HTTPStatus: status,
+		Code:       status,
+		Message:    message,
+		Err:        internal,
 	}
 }
