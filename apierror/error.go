@@ -1,6 +1,6 @@
 package apierror
 
-import "errors"
+import "github.com/pkg/errors"
 
 // APIError ...
 // e, ok := err.(*apierror.APIError)
@@ -16,21 +16,11 @@ func (e *APIError) Error() string {
 }
 
 // NewError ...
-func NewError(status int, message string) *APIError {
+func NewError(status int, message string, err error) *APIError {
 	return &APIError{
 		HTTPStatus: status,
 		Code:       status,
 		Message:    message,
-		Err:        errors.New(message),
-	}
-}
-
-// NewErrorWithInternal ...
-func NewErrorWithInternal(status int, message string, internal error) *APIError {
-	return &APIError{
-		HTTPStatus: status,
-		Code:       status,
-		Message:    message,
-		Err:        internal,
+		Err:        errors.Wrap(err, message),
 	}
 }
