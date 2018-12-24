@@ -26,7 +26,7 @@ func ErrorHandler(logger *zap.Logger) func(error, echo.Context) {
 
 		ae, ok := err.(*apierror.APIError)
 		if !ok {
-			err = apierror.NewErrorWithInternal(http.StatusInternalServerError, http.StatusText(http.StatusInternalServerError), errors.Wrap(err, "errorhandler: internal error"))
+			err = apierror.NewErrorWrapped(http.StatusInternalServerError, http.StatusText(http.StatusInternalServerError), errors.Wrap(err, "errorhandler: internal error"))
 			ae, _ = err.(*apierror.APIError)
 		}
 

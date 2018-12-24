@@ -24,3 +24,13 @@ func NewError(status int, message string, err error) *APIError {
 		Err:        errors.Wrap(err, message),
 	}
 }
+
+// NewErrorWrapped ...
+func NewErrorWrapped(status int, message string, err error) *APIError {
+	return &APIError{
+		HTTPStatus: status,
+		Code:       status,
+		Message:    message,
+		Err:        err,
+	}
+}

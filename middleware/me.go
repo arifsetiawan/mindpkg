@@ -1,6 +1,7 @@
 package middleware
 
 import (
+	"errors"
 	"net/http"
 
 	"github.com/arifsetiawan/go-common/request"
@@ -20,7 +21,7 @@ func (m *Me) GetMe(next echo.HandlerFunc) echo.HandlerFunc {
 
 		// Token must be set
 		if len(bearerToken) == 0 {
-			return apierror.NewError(http.StatusForbidden, "Access token is not set")
+			return apierror.NewError(http.StatusForbidden, "Access token is not set", errors.New("Access token is not set"))
 		}
 
 		return next(c)
