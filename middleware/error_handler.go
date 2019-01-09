@@ -7,8 +7,8 @@ import (
 	"github.com/pkg/errors"
 	"go.uber.org/zap"
 
-	"gitlab.com/mindtrex/mindpkg/apierror"
-	"gitlab.com/mindtrex/mindpkg/response"
+	"github.com/arifsetiawan/mindpkg/apierror"
+	"github.com/arifsetiawan/mindpkg/response"
 )
 
 type stackTracer interface {
