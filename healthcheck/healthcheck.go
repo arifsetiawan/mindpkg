@@ -5,7 +5,7 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/arifsetiawan/nextpkg/env"
+	"github.com/arifsetiawan/mindpkg/env"
 	"github.com/labstack/echo"
 )
 
