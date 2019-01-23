@@ -24,9 +24,14 @@ func ErrorHandler(logger *zap.Logger) func(error, echo.Context) {
 			tenant = "none"
 		}
 
+		heCode := http.StatusInternalServerError
+		if he, ok := err.(*echo.HTTPError); ok {
+			heCode = he.Code
+		}
+
 		ae, ok := err.(*apierror.APIError)
 		if !ok {
-			err = apierror.NewErrorWrapped(http.StatusInternalServerError, http.StatusText(http.StatusInternalServerError), errors.Wrap(err, "errorhandler: internal error"))
+			err = apierror.NewErrorWrapped(heCode, http.StatusText(heCode), errors.Wrap(err, "errorhandler: internal error"))
 			ae, _ = err.(*apierror.APIError)
 		}
 
