@@ -9,6 +9,7 @@ import "math/rand"
 
 // Character sets for random string generation
 const (
+	CharSetNumeric            = "0123456789012345678901234567890123456789"
 	CharSetAlphabet           = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 	CharSetAlphaNumeric       = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 	CharSetAlphaNumericSymbol = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!#$%&()*+,-./:;<=>?@[]^_`{|}~"
@@ -54,6 +55,11 @@ func (g *Generator) GenerateRandomString(n int) string {
 	}
 
 	return string(b)
+}
+
+// GenerateNumeric is
+func GenerateNumeric(n int) string {
+	return NewGenerator(CharSetAlphaNumeric).GenerateRandomString(n)
 }
 
 // GenerateAlphabet is
