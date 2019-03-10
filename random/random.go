@@ -9,7 +9,7 @@ import "math/rand"
 
 // Character sets for random string generation
 const (
-	CharSetNumeric            = "0123456789012345678901234567890123456789"
+	CharSetNumeric            = "0123456789987654321013579246801357924680"
 	CharSetAlphabet           = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 	CharSetAlphaNumeric       = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 	CharSetAlphaNumericSymbol = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!#$%&()*+,-./:;<=>?@[]^_`{|}~"
